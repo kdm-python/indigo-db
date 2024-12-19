@@ -1,0 +1,54 @@
+# Python bytecode files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual environment directories
+env/
+venv/
+ENV/
+.venv/
+
+# IDE or editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Test results
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+
+# Coverage reports
+.coverage
+*.coveragerc
+
+# Flask instance folder
+instance/
+
+# Pytest cache
+.cache/
+
+# mypy
+.mypy_cache/
+
+# Sphinx documentation
+_build/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Docker
+docker-compose.override.yml
+
