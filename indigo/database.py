@@ -1,18 +1,19 @@
 # Database
 
-import logging
+from loguru import logger
 from sqlalchemy import Engine, create_engine, text
 from sqlalchemy.exc import SQLAlchemyError
 
-from models import Base
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-DB_URL = "postgresql://postgres:blackmore@localhost:5432/indigo"
+from .models import Base
 
 
-def connect_to_db(url: str = DB_URL) -> Engine:  # type: ignore
+POSTGRES_URL = "postgresql://postgres:blackmore@localhost:5432/indigo"
+MYSQL_URL = "mysql+pymysql://root:blackmore@172.17.0.3:3306/indigo"
+SQLITE_URL = "sqlite:///indigo.db"
+
+
+def connect_to_db(url: str = MYSQL_URL) -> Engine:  # type: ignore
     """Create and return a SQLAlchemy engine instance.
 
     Args:
@@ -58,13 +59,14 @@ def create_tables_if_not_exist(engine: Engine) -> None:
 
 def init_db() -> Engine:
     """Initialize the database: connect and create tables.
-    
+
     Returns:
         Engine: SQLAlchemy Engine instance
     """
     engine = connect_to_db()
     create_tables_if_not_exist(engine)
     return engine
+
 
 if __name__ == "__main__":
     # Optionally run as script
